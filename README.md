@@ -19,6 +19,14 @@
 请先进入当前项目目录，再执行下面命令：
 
 ```bash
+python3 exp1_data_quality.py
+python3 exp2_algorithm_fairness.py
+python3 run_all_experiments.py
+```
+
+如需显式指定数据集目录，也可以执行：
+
+```bash
 python3 exp1_data_quality.py --data-dir ./data/ml-1m
 python3 exp2_algorithm_fairness.py --data-dir ./data/ml-1m
 python3 run_all_experiments.py --data-dir ./data/ml-1m

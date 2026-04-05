@@ -20,6 +20,10 @@ from mf_utils import (
 )
 import matplotlib.pyplot as plt
 
+PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_DATA_DIR = PROJECT_ROOT / "data" / "ml-1m"
+DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "experiment1"
+
 
 def inject_noise(
     train_df: pd.DataFrame,
@@ -420,12 +424,17 @@ def print_experiment_one_summary(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="实验一：数据质量对推荐精度的影响")
-    parser.add_argument("--data-dir", type=str, required=True, help="MovieLens 1M 数据目录")
+    parser.add_argument(
+        "--data-dir",
+        type=str,
+        default=str(DEFAULT_DATA_DIR),
+        help="MovieLens 1M 数据目录；默认使用项目内置的 data/ml-1m",
+    )
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="outputs/experiment1",
-        help="图表输出目录",
+        default=str(DEFAULT_OUTPUT_DIR),
+        help="图表输出目录；默认输出到项目内的 outputs/experiment1",
     )
     parser.add_argument("--random-state", type=int, default=42)
     parser.add_argument("--n-factors", type=int, default=20)

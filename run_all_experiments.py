@@ -6,15 +6,24 @@ from pathlib import Path
 from exp1_data_quality import run_experiment as run_experiment_one
 from exp2_algorithm_fairness import run_experiment as run_experiment_two
 
+PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_DATA_DIR = PROJECT_ROOT / "data" / "ml-1m"
+DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs"
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="一键运行两个推荐系统治理实验")
-    parser.add_argument("--data-dir", type=str, required=True, help="MovieLens 1M 数据目录")
+    parser.add_argument(
+        "--data-dir",
+        type=str,
+        default=str(DEFAULT_DATA_DIR),
+        help="MovieLens 1M 数据目录；默认使用项目内置的 data/ml-1m",
+    )
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="outputs",
-        help="总输出目录",
+        default=str(DEFAULT_OUTPUT_DIR),
+        help="总输出目录；默认输出到项目内的 outputs",
     )
     parser.add_argument("--random-state", type=int, default=42)
     parser.add_argument("--n-factors", type=int, default=20)
