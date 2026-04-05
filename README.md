@@ -9,16 +9,19 @@
 ## 数据准备
 
 1. 下载 MovieLens 1M：<https://grouplens.org/datasets/movielens/1m/>
-2. 解压后确保目录中至少包含：
+2. 将数据集放到当前项目目录下的 `data/ml-1m/`
+3. 确保目录中至少包含：
    - `ratings.dat`
    - `users.dat`
 
 ## 运行方式
 
+请先进入当前项目目录，再执行下面命令：
+
 ```bash
-python3 exp1_data_quality.py --data-dir /path/to/ml-1m
-python3 exp2_algorithm_fairness.py --data-dir /path/to/ml-1m
-python3 run_all_experiments.py --data-dir /path/to/ml-1m
+python3 exp1_data_quality.py --data-dir ./data/ml-1m
+python3 exp2_algorithm_fairness.py --data-dir ./data/ml-1m
+python3 run_all_experiments.py --data-dir ./data/ml-1m
 ```
 
 如需调整模型参数，可附加：
